@@ -75,7 +75,6 @@ int conferediagonals(int n, int quadrado[n][n]){
 
 int main(){
     int i, j, n;
-    teste = n*(n*n+1)/2;        /*Condição para existir um quadrado mágico.*/
 
     printf("\nTestando se eh Quadrado Magico!\n");
     printf("\n\nEscreva qual o tamanho do seu quadrado: ");
@@ -88,6 +87,8 @@ int main(){
     }
 
     int quadrado[n][n];         /*Declarando a matriz, com tamanho NxN*/
+
+    teste = n*(n*n+1)/2;        /*Condição para existir um quadrado mágico.*/
 
     printf("\n  O programa ira informar se os valores colocados formam um quadrado magico.\nEscreva os numeros do seu quadrado:\n");
 
@@ -103,6 +104,8 @@ int main(){
     int resc = conferecolunas(n, quadrado);         /*Conferir as colunas*/
     int resdp = conferediagonalp(n, quadrado);      /*Conferir a diagonal principal*/
     int resds = conferediagonals(n, quadrado);      /*Conferir a diagonal secundária*/
+
+    printf("\n%i\t%i\t%i\t%i", resl, resc, resdp, resds);
 
     if(resl == n && resc == n && resdp == 1 && resds == 1) printf("\nEh quadrado magico!\n");
 
