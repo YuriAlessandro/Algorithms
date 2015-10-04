@@ -16,8 +16,8 @@ A variável "l" corresponde as linhas e a variável "c" corresponde as colunas. 
         for(c = 0; c < n; c++){
             somal += (quadrado[l][c]);  /*"somal" (soma linhas) vai somando os números de uma determinada linha*/
             if(somal == teste) condl++;
-            }
         }
+    }
 
 /* A váriavel "condl" (condição das linhas) é incrementanda cada vez que a soma dos números passa no teste. Dessa
 forma, se a "condl" for igual ao número de linhas da matriz, siginifica que todas as linhas passaram no teste.
@@ -36,8 +36,8 @@ int conferecolunas(int n, int quadrado[n][n]){
         for(l = 0; l < n; l++){
             somac += (quadrado[l][c]);  /*"somac" (soma colunas) vai somando os números das colunas*/
             if(somac == teste) condc++;
-            }
         }
+    }
 
 /* A váriavel "condc" (condição das colunas) é incrementanda cada vez que a soma dos números passa no teste.
 Dessa forma, se ela for igual ao número de colunas da matriz, siginifica que todas passaram no teste. A função
@@ -81,9 +81,9 @@ int main(){
 
     scanf("%i", &n);            /*O usuário entra com o tamanho da matriz*/
 
-    if(n<=2){                   /*Só podemos trabalhar com matrizes com ordem maiores que 2*/
+    while(n <= 2) {                   /*Só podemos trabalhar com matrizes com ordem maiores que 2*/
         printf("Quadrados magicos tem tamanho de 3x3 maior. Escolha um numero maior que 2.\n");
-        return 0;
+        scanf("%i", &n);
     }
 
     int quadrado[n][n];         /*Declarando a matriz, com tamanho NxN*/
@@ -93,7 +93,7 @@ int main(){
     printf("\n  O programa ira informar se os valores colocados formam um quadrado magico.\nEscreva os numeros do seu quadrado:\n");
 
     for(i = 0; i < n; i++){                 /*Recebendo os valores da matriz*/
-        for(j= 0; j< n; j++){
+        for(j= 0; j < n; j++){
             scanf("%i", &quadrado[i][j]);
         }
     }
