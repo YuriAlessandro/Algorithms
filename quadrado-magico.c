@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-// int teste;
+int teste;
 
 /* "teste" é uma váriavel global. Ela vai servir para saber se as somas das linhas, colunas e diagonais
 são iguais a N*(N*N + 1)/2 --> condição para existir o quadrado mágico*/
 
-int conferelinhas(int n, int quadrado[n][n], int teste){
+int conferelinhas(int n, int quadrado[n][n]){
     int l, c, somal, condl = 0;
 
 /* A função "conferelinhas" soma os valores de cada linha e confere se é igual ao teste (declarado em main).
@@ -26,7 +26,7 @@ A função"conferelinhas" retorna quantas linhas passam no teste*/
     return condl;
 }
 
-int conferecolunas(int n, int quadrado[n][n], int teste){
+int conferecolunas(int n, int quadrado[n][n]){
     int l, c, somac, condc = 0;
 
 /* A função "conferecolunas" soma os valores de cada coluna e se confere se é igual ao teste (declarado em main).*/
@@ -46,7 +46,7 @@ Dessa forma, se ela for igual ao número de colunas da matriz, siginifica que to
     return condc;
 }
 
-int conferediagonalp(int n, int quadrado[n][n], int teste){
+int conferediagonalp(int n, int quadrado[n][n]){
     int l, somad = 0, conddp = 0;
 
     /* A função "conferediagonalp" soma os valores da diagonal principal da matriz*/
@@ -59,7 +59,7 @@ int conferediagonalp(int n, int quadrado[n][n], int teste){
     return conddp;
 }
 
-int conferediagonals(int n, int quadrado[n][n], int teste){
+int conferediagonals(int n, int quadrado[n][n]){
     int l, somad = 0, condds = 0;
 
     /* A função "conferediagonals" soma os valores da diagonal secundária da matriz*/
@@ -75,7 +75,7 @@ int conferediagonals(int n, int quadrado[n][n], int teste){
 
 int main(){
     int i, j, n;
-    int teste = n*(n*n+1)/2;        /*Condição para existir um quadrado mágico.*/
+    teste = n*(n*n+1)/2;        /*Condição para existir um quadrado mágico.*/
 
     printf("\nTestando se eh Quadrado Magico!\n");
     printf("\n\nEscreva qual o tamanho do seu quadrado: ");
@@ -99,12 +99,10 @@ int main(){
 
 /*Foram usadas quatro funções para:*/
 
-    int resl = conferelinhas(n, quadrado, teste);          /*Conferir as linhas*/
-    int resc = conferecolunas(n, quadrado, teste);         /*Conferir as colunas*/
-    int resdp = conferediagonalp(n, quadrado, teste);      /*Conferir a diagonal principal*/
-    int resds = conferediagonals(n, quadrado, teste);      /*Conferir a diagonal secundária*/
-
-    printf("\n%i\t%i\t%i\t%i", resl, resc, resdp, resds);
+    int resl = conferelinhas(n, quadrado);          /*Conferir as linhas*/
+    int resc = conferecolunas(n, quadrado);         /*Conferir as colunas*/
+    int resdp = conferediagonalp(n, quadrado);      /*Conferir a diagonal principal*/
+    int resds = conferediagonals(n, quadrado);      /*Conferir a diagonal secundária*/
 
     if(resl == n && resc == n && resdp == 1 && resds == 1) printf("\nEh quadrado magico!\n");
 
