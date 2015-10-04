@@ -105,8 +105,6 @@ int main(){
     int resdp = conferediagonalp(n, quadrado);      /*Conferir a diagonal principal*/
     int resds = conferediagonals(n, quadrado);      /*Conferir a diagonal secundária*/
 
-    printf("\n%i\t%i\t%i\t%i", resl, resc, resdp, resds);
-
     if(resl == n && resc == n && resdp == 1 && resds == 1) printf("\nEh quadrado magico!\n");
 
     /*OS CASOS "resl" E "resc": Como testadas nas funções, cada vez que a soma dos números de uma linha passa no
