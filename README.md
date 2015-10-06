@@ -1,8 +1,5 @@
 # Algorithms
-Alguns programas em linguagem de programação C.
-
-# Algorithms
-Some programs in language C.
+Algoritimos de alguns programas.
 
 # Ajude
 Contribua com a melhoria desses códigos. 
