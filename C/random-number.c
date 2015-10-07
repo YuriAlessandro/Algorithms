@@ -1,24 +1,50 @@
-/*Esse código gera um "número aleátorio" (na verdade, nem tão aleátorio assim). 
-Toda vez que o programa reinicia, a sequência "aleátoria" gerada é a mesma.*/
-
-/*This code generates a "random number" (in fact, not as random as well).
-Every time the program restarts, the sequence "randomly" generated is the same.*/
+//Esse código gera um número aleatório em um intervalo informado.
+//This code generates a random number in a specified range
 
 #include <stdio.h>
-#include <stdlib.h>                       /* The library "stdlib" will be included for us to use the rand function.*/
+#include <stdlib.h>
+#include <time.h>
+
+/*
+ * Used Libraries:
+ * stdio
+ *  - To input/output,
+ * stdlib
+ *  - To be used the rand() and srand() functions,
+ * time
+ *  - To seed the srand() function,
+ */
 
 int main(){
-    int op = 1, ivl;                      /* "op" is a variable that will help with a short menu for the program.*/
-    while(op){
+    /*
+     * Used Variables:
+     * op : int
+     *  - Variable to define if the program continues run.
+     * ivl : int
+     *  - Variable to set the max range of the random number.
+    */
+    
+    int op = 1, ivl;
+    while(op) {
         printf("[1] Take a random number\t[0] Close\n");
-        scanf("%i", &op);                 /* scaning "op"*/
+        //Scan the op(tion) from the user. Continues or not running.
+        scanf("%i", &op);
         
-        if (op > 1 || op < 0) return 0;   /* If "op" is greater than 1 or less than 0,*/
-                                          /* the program continues run. Otherwise, close ("op" equal to 0).*/
+        //If "op" is different than 1, the program ends
+        if (op != 1) break;
         
         printf("Digite o valor maximo do valor gerado (0 -> n)\n");
-        scanf("%i", &ivl);                /* The variable "ivl" defines the range (0 - ivl).*/
-        printf("%i\n", rand() % ivl);     /* rand() will generate any number, will rand() mod ivl its the maximum value.*/
+        //The variable "ivl" defines the range (0 -> ivl).
+        scanf("%i", &ivl);
+        /* srand() change the seed of random() with a very large
+         * number generated with the time() function.
+         */
+        srand((unsigned)time(NULL));
+        /* rand() will generate any number, so to limit it to the
+         * specified range, just the mod operation with ivl is showed.
+         */
+        printf("%i\n", rand()%ivl);
     }
+
     return 0;
 }
