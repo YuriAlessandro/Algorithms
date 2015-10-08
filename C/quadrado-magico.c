@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// Author: Yuri Alessandro Martins
+
 int teste;
 
 /* "teste" é uma váriavel global. Ela vai servir para saber se as somas das linhas, colunas e diagonais
