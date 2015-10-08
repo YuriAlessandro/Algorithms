@@ -33,7 +33,7 @@ int main(){
         //If "op" is different than 1, the program ends
         if (op != 1) break;
         
-        printf("Digite o valor maximo do valor gerado (0 -> n)\n");
+        printf("Enter the max of the random number to be generated (0 -> max)\n");
         //The variable "ivl" defines the range (0 -> ivl).
         scanf("%i", &ivl);
         /* srand() change the seed of random() with a very large
