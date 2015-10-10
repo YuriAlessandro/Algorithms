@@ -1,12 +1,20 @@
 #include <stdio.h>
-#include <string.h>
+
+//A função "func_strlen" sempre irá calcular o tamanho da string quando chamada.
+
+int func_strlen(char *str){               
+   int i;
+   for(i=0; ;i++){
+      if(str[i] == 0) break;
+   }
+   return i;
+}
 
 int main()
 {
    	char str[200];
    	gets(str);
-   	int lenght = strlen(str);
-   	printf("%i\n", lenght);
+   	printf("%i\n", func_strlen(str));
    	
     return 0;
 }
