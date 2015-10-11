@@ -18,6 +18,8 @@ int main() {
      */
     
     fgets(name, 20, stdin);
+    strtok(name, "\n");
+    //This function removes the breakline to send
     
     /* This function takes three parameters.
      * The first is the variable that will receive the text.
