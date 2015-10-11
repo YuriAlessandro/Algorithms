@@ -8,6 +8,24 @@ int main() {
     int age, years;
     printf("What's your name?\n");
     
+    /* scanf("&s", name);
+     * When we use scanf() function to get strings, the string
+     * is cropped at the first space. To prevent this, we could use:
+     * gets(name);
+     * gets() is another way to get text from user.
+     * But, your use isn't recommended because it can cause a memory overflow
+     * So, the right way to get text is the function fgets():
+     */
+    
+    fgets(name, 20, stdin);
+    
+    /* This function takes three parameters.
+     * The first is the variable that will receive the text.
+     * The second is the maximum size of the input.
+     * And the last is where the text comes, in this case,
+     * we'll receive the text from standard input (keyboard, for example).
+     */
+    
     scanf("%s", name);
     //When using char, we do not use the "&" to indicate the address.
     
@@ -20,22 +38,9 @@ int main() {
      * was defined as NULL.
      */
     
-    /* Now, we can call the function to get the nickname.
-     * gets(nick);
-     * gets() is another way to get text from user.
-     * But, your use isn't recommended because it can cause a memory overflow
-     * So, the right way to get text is the function fgets():
-     */
-    
+    //Now, we can call the function to get the nickname.
     fgets(nick, 20, stdin);
     
-    /* This function takes three parameters.
-     * The first is the variable that will receive the text.
-     * The second is the maximum size of the input.
-     * And the last is where the text comes, in this case,
-     * we'll receive the text from standard input (keyboard, for example).
-     */
-
     printf("Hi %s, or %s!? How old are you??\n", name, nick);
     scanf("%i", &age);
     years = 2015 - age;
