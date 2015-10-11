@@ -26,9 +26,6 @@ int main() {
      * we'll receive the text from standard input (keyboard, for example).
      */
     
-    scanf("%s", name);
-    //When using char, we do not use the "&" to indicate the address.
-    
     printf("Put your nickname: ");
     
     setbuf(stdin, NULL);
