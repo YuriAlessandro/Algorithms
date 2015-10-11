@@ -22,7 +22,7 @@ int main()
     
     printf("Hi %s, or %s!? How old are you??\n", name, nick);
     scanf("%i", &age);
-    years = 2015 - (idade);
+    years = 2015 - age;
     printf("Cool, %s. You born in %i!\n", name, years);
     return 0;
 }
