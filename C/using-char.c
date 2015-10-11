@@ -1,8 +1,7 @@
 //Receiving text in C.
 
 #include <stdio.h>
-int main()
-{
+int main() {
     char name[20], nick[20];
     //To receive "words", use "char variable_name[size]"
     
@@ -41,5 +40,6 @@ int main()
     scanf("%i", &age);
     years = 2015 - age;
     printf("Cool, %s. You born in %i!\n", name, years);
+
     return 0;
 }
