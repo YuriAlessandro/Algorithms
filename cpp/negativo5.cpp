@@ -3,8 +3,6 @@
 
 using namespace std;
 
-//Lê 5 valores inteiros, um de cada vez, conta quantos destes valores são negativos e imprime esta informação.
-
 int main(){
 	auto negatives( 0u ); // MESMO QUE: int negatives = 0; u siginigica unsigned;
 	auto number ( 0 );
@@ -15,7 +13,7 @@ int main(){
 		if(number < 0) negatives++;
 	}
 
-	cout << "Total de " << negatives << " numeros negativos";
+	cout << "\n" << negatives << " numeros negativos de um total de " << HOW_MANY_TIMES;
 	cout << "\n>>> Normal exiting... \n \n";
 	return 0;
 }
