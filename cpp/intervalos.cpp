@@ -27,10 +27,10 @@ int main(){
     perc4 = static_cast < float > (t04)/total_numbers*100;
 
     cout << "\n\nDe um total de " << total_numbers << " números, resultou:\n";
-    cout << "\n>> Um total de " << perc1 << "\% numeros no primeiro intervalo";
-    cout << "\n>> Um total de " << perc2 << "\% numeros no segundo intervalo";
-    cout << "\n>> Um total de " << perc3 << "\% numeros no terceiro intervalo";
-    cout << "\n>> Um total de " << perc4 << "\% numeros no quarto intervalo\n";
+    cout << "\n>> Um total de " << perc1 << "\% numeros no intervalo (0, 25]";
+    cout << "\n>> Um total de " << perc2 << "\% numeros no intervalo (25, 50]";
+    cout << "\n>> Um total de " << perc3 << "\% numeros no intervalo (50, 75)";
+    cout << "\n>> Um total de " << perc4 << "\% numeros no intervalo (75, 100]\n";
 
     none = total_numbers - (t01 + t02 + t03 + t04);
 
