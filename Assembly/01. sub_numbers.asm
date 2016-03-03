@@ -1,3 +1,9 @@
+# This is a simple algorithm in Assembly.
+# Subtract two numbers.
+
+# CREATED ON MARS.
+# There is the occurrence of pseudo-instructions.
+
 	.data
 str1:	.asciiz "Result: "
 
