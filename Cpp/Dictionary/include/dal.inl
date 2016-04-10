@@ -9,8 +9,8 @@
 
 template <typename Key, typename Data, typename MyKeyComparator>
 int DAL<Key, Data, MyKeyComparator>::compare(Key _x, Key _y) const {
-    MyKeyComparator comp;
-    return comp(_x, _y);
+    MyKeyComparator compare;
+    return compare(_x, _y);
 }
 
 template < typename Key, typename Data, typename MyKeyComparator >
@@ -134,7 +134,7 @@ template < typename Key, typename Data, typename MyKeyComparator >
 Key DSAL<Key, Data, MyKeyComparator>::min( void ) const{
 	Key _min = DAL<Key, Data, MyKeyComparator>::mpt_Data[0].id;
 	for (int i = 0; i < DAL<Key, Data, MyKeyComparator>::mi_Length; i++){
-		_min = ( DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id < _min ) ? DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id : _min;
+		_min = ( DAL<Key, Data, MyKeyComparator>::compare(DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id, _min) == -1 ) ? DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id : _min;
 	}
 	return _min;
 }
@@ -143,7 +143,7 @@ template < typename Key, typename Data, typename MyKeyComparator >
 Key DSAL<Key, Data, MyKeyComparator>::max( void ) const{
 	Key _max = DAL<Key, Data, MyKeyComparator>::mpt_Data[0].id;
 	for (int i = 0; i < DAL<Key, Data, MyKeyComparator>::mi_Length; i++){
-		_max = ( DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id > _max ) ? DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id : _max;
+		_max = ( DAL<Key, Data, MyKeyComparator>::compare(DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id, _max) == 1 ) ? DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id : _max;
 	}
 	return _max;
 }
