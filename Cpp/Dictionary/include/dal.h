@@ -46,7 +46,6 @@ class DAL
         bool remove( const Key & _x, Data & _s );     // Remove da lista.
         bool search( const Key & _x, Data & _s ) const;         // busca publica.
         bool insert( const Key & _novaId, const Data & _novaInfo );
-        
         Key min() const;    //Recupera a menor chave do dicionário
         Key max() const;    //Recupera a maior chave do dicionário
 
