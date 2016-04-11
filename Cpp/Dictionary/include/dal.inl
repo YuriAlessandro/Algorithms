@@ -24,12 +24,10 @@ template < typename Key, typename Data, typename MyKeyComparator >
 bool DAL<Key, Data, MyKeyComparator>::remove( const Key & _x, Data & _s ){
 
 	int pos = this->_search( _x );
-
-	if ( pos != mi_Length ){
-		_s = mpt_Data[pos].info;
-		for (auto i = pos; i < mi_Length-1; i++)
-			mpt_Data[i] = mpt_Data[i+1];
-
+	if( pos != mi_Length ){
+		_s = mpt_Data[ pos ].info;
+		mpt_Data[ pos ].id = mpt_Data[ mi_Length - 1].id;
+		mpt_Data[ pos ].info = mpt_Data[ mi_Length - 1].info;
 		mi_Length--;
 		return true;
 	}else return false;
@@ -63,6 +61,24 @@ bool DAL<Key, Data, MyKeyComparator>::insert( const Key & _newID, const Data & _
 		}else throw std::length_error( "[insert()]: Não é possível inserir mais elementos" );
 	}
 	return false;
+}
+
+template < typename Key, typename Data, typename MyKeyComparator >
+Key DAL<Key, Data, MyKeyComparator>::min( void ) const{
+	Key _min = mpt_Data[0].id;
+	for (int i = 0; i < mi_Length; i++){
+		_min = ( compare(mpt_Data[i].id, _min) == -1 ) ? mpt_Data[i].id : _min;
+	}
+	return _min;
+}
+
+template < typename Key, typename Data, typename MyKeyComparator >
+Key DAL<Key, Data, MyKeyComparator>::max( void ) const{
+	Key _max = mpt_Data[0].id;
+	for (int i = 0; i < mi_Length; i++){
+		_max = ( compare( mpt_Data[i].id, _max) == 1 ) ? mpt_Data[i].id : _max;
+	}
+	return _max;
 }
 
 // Construtor inicializa TAD.
@@ -132,20 +148,20 @@ bool DSAL<Key, Data, MyKeyComparator>::insert( const Key & _newID, const Data & 
 
 template < typename Key, typename Data, typename MyKeyComparator >
 Key DSAL<Key, Data, MyKeyComparator>::min( void ) const{
-	Key _min = DAL<Key, Data, MyKeyComparator>::mpt_Data[0].id;
-	for (int i = 0; i < DAL<Key, Data, MyKeyComparator>::mi_Length; i++){
-		_min = ( DAL<Key, Data, MyKeyComparator>::compare(DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id, _min) == -1 ) ? DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id : _min;
+	if( DAL<Key, Data, MyKeyComparator>::mi_Length != 0){
+		Key _min = DAL<Key, Data, MyKeyComparator>::mpt_Data[0].id;
+		return _min;
 	}
-	return _min;
+	return 0;
 }
 
 template < typename Key, typename Data, typename MyKeyComparator >
 Key DSAL<Key, Data, MyKeyComparator>::max( void ) const{
-	Key _max = DAL<Key, Data, MyKeyComparator>::mpt_Data[0].id;
-	for (int i = 0; i < DAL<Key, Data, MyKeyComparator>::mi_Length; i++){
-		_max = ( DAL<Key, Data, MyKeyComparator>::compare(DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id, _max) == 1 ) ? DAL<Key, Data, MyKeyComparator>::mpt_Data[i].id : _max;
+	if( DAL<Key, Data, MyKeyComparator>::mi_Length != 0){
+		Key _max = DAL<Key, Data, MyKeyComparator>::mpt_Data[ DAL<Key, Data, MyKeyComparator>::mi_Length - 1 ].id;
+		return _max;
 	}
-	return _max;
+	return 0;
 }
 
 template < typename Key, typename Data, typename MyKeyComparator >
