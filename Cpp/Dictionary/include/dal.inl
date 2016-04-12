@@ -97,7 +97,6 @@ DAL<Key, Data, MyKeyComparator>::DAL ( int _iMaxSz ) :
 
 // ---> DSAL:
 
-// IMPLEMENTAR BINARY SEARCH MODIFICADA AQUI:
 template < typename Key, typename Data, typename MyKeyComparator >
 int DSAL<Key, Data, MyKeyComparator>::_search( const Key & _x ) const {
     
