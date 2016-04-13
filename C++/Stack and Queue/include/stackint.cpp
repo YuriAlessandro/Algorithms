@@ -17,6 +17,16 @@ Object StackInt<Object>::pop( ){
 }
 
 template <class Object>
-Object StackInt<Object>::top( ){
+Object StackInt<Object>::top( ) const{
 	return m_stack[m_top - 1];
+}
+
+template <class Object>
+bool StackInt<Object>::isEmpty( ) const {
+	return (m_top == 0);
+}
+
+template <class Object>
+void StackInt<Object>::makeEmpty( ){
+	m_top = 0;
 }

@@ -23,10 +23,10 @@ public:
 
 	void push( const Object &x );
 	Object pop( );
-	Object top( );
+	Object top( ) const ;
 
-	//bool isEmpty( ) const;
-	//void makeEmpty( );
+	bool isEmpty( ) const;
+	void makeEmpty( );
 
 }; 
 
