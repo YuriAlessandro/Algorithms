@@ -1,13 +1,25 @@
 #include "stackint.h"
 
 template <class Object>
-void StackInt<Object>::push( const Object &x ){
-	if (m_top < m_size){
-		m_stack[m_top] = x;
-		m_top++;
-	}
-	else std::cout << ">>> Sem espaço na pilha.\n";		//Dar um resize depois
+void StackInt<Object>::resize(  ){
+	int* _rsz = new int[ m_size + 1 ];
+	for(int i = 0; i < m_size; i++)
+	_rsz[i] = m_stack[i];
+
+	m_size++;
+	m_stack = _rsz;
+	delete[] _rsz;
 }
+
+template <class Object>
+void StackInt<Object>::push( const Object &x ){
+	if (m_top > m_size){
+		this->resize();
+	}
+	m_stack[m_top] = x;
+	m_top++;
+}
+
 
 template <class Object>
 Object StackInt<Object>::pop( ){
