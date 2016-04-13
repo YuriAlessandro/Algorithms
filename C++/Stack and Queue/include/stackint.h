@@ -1,5 +1,6 @@
 #include "AbsStack.h"
 
+template <class Object>
 class StackInt : public AbsStack<Object>{
 public:
 	StackInt();
@@ -11,5 +12,7 @@ public:
 	bool isEmpty( ) const;
 	void makeEmpty( );
 private:
-	
+	int m_size;
+	int m_stack[m_size];
+	int m_lenght;
 }; 
