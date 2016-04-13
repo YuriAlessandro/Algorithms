@@ -11,9 +11,10 @@ private:
 	int m_size;
 	int m_top;
 	Object *m_stack;
+	void resize();
 
 public:
-	StackInt( const int & _size) : m_size ( _size ) {
+	StackInt( const int & _size = 50) : m_size ( _size ) {
 		m_top = 0;
 		m_stack = new Object[m_size];
 	}
