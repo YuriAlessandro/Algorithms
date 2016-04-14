@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-#include "AbsStack.h"
-
 template <class Object>
 class StackAr : public AbsStack<Object>{
 private:

@@ -1,15 +1,17 @@
 #ifndef _QUEUEAR_H_
 #define _QUEUEAR_H_
 
+#include "AbsQueue.h"
+
 template < class Object >
-class QueueAr : public AbsQueue<Object>{
+class QueueAr : public AbsQueue<Object> {
 public:
-	QueueAr( int _size = 50 ) : 
+	QueueAr( int _size = 10 ) : 
 		m_size( _size ),
 		m_front( -1 ),
 		m_back ( -1 )
 	{
-		m_queue = new Object[ _size ];	
+		m_queue = new Object[ m_size ];	
 	} 
 	
 	~QueueAr(){
@@ -28,6 +30,9 @@ private:
 	int m_front;
 	int m_back;
 	Object * m_queue;
+
+	void resize();
+	void _double();
 };
 
 #include "queuear.inl"
