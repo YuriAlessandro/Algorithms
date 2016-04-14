@@ -3,10 +3,10 @@
 
 #include "stackint.h"
 
-template <class Object>
+template <class Object = int>
 void StackInt<Object>::resize(  ){
-	int* _rsz = new int[ m_size + 1 ];
-	std::memcpy( _rsz, m_stack, m_size );
+	int* _rsz = new int[ m_size*2 ];
+	std::memcpy( _rsz, m_stack, sizeof(int)*m_size );
 	delete [] m_stack;
 	m_size++;
 	m_stack = _rsz;
