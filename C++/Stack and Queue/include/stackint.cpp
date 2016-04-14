@@ -12,7 +12,7 @@ void StackInt<Object>::resize(  ){
 }
 
 template <class Object>
-void StackInt<Object>::push( const Object &x ){
+void StackInt<Object>::push( const int &x ){
 	if (m_top > m_size){
 		this->resize();
 	}
@@ -22,14 +22,14 @@ void StackInt<Object>::push( const Object &x ){
 
 
 template <class Object>
-Object StackInt<Object>::pop( ){
+int StackInt<Object>::pop( ){
 	Object removed = m_stack[m_top - 1];
 	m_top--;
 	return removed;
 }
 
 template <class Object>
-Object StackInt<Object>::top( ) const{
+int StackInt<Object>::top( ) const{
 	return m_stack[m_top - 1];
 }
 

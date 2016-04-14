@@ -10,21 +10,21 @@ class StackInt : public AbsStack<Object>{
 private:
 	int m_size;
 	int m_top;
-	Object *m_stack;
+	int *m_stack;
 	void resize();
 
 public:
 	StackInt( const int & _size = 50) : m_size ( _size ) {
 		m_top = 0;
-		m_stack = new Object[m_size];
+		m_stack = new int[m_size];
 	}
 	~StackInt( ){
 		delete [] m_stack;
 	}
 
-	void push( const Object &x );
-	Object pop( );
-	Object top( ) const ;
+	void push( const int &x );
+	int pop( );
+	int top( ) const ;
 
 	bool isEmpty( ) const;
 	void makeEmpty( );

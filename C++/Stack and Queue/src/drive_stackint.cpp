@@ -1,10 +1,12 @@
+/* Arquivo de testes para uma pilha de inteiros. */
+
 #include <iostream>
 
 #include "stackint.h"
 
 int main(){
 	
-	std::cout << ">>> Rodando StackInt:\n";
+	std::cout << "\n>>> Rodando StackInt:\n";
 
 	std::cout << "Declarando uma stack 'pilha1'\n";
 	StackInt<int> pilha1( 2 );
