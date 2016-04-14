@@ -1,14 +1,15 @@
+#include <iostream>
+#include <cstring>
+
 #include "stackint.h"
 
 template <class Object>
 void StackInt<Object>::resize(  ){
 	int* _rsz = new int[ m_size + 1 ];
-	for(int i = 0; i < m_size; i++)
-	_rsz[i] = m_stack[i];
-
+	std::memcpy( _rsz, m_stack, m_size );
+	delete [] m_stack;
 	m_size++;
 	m_stack = _rsz;
-	delete[] _rsz;
 }
 
 template <class Object>
