@@ -50,8 +50,8 @@ int main(){
 	std::cout << ">>> Normal exiting...\n\n";
 
 
-	std::cout << "Declarando uma stack 'pilha2', com strings...\n";
-	StackAr<std::string> pilha2;
+	std::cout << "Declarando uma stack 'pilha2', com strings, porém com apenas 3 espaços...\n";
+	StackAr<std::string> pilha2(3);
 	
 	bool cnt2 = pilha2.isEmpty();
 	(cnt2 == 1) ? std::cout << "A pilha está vazia...\n" : std::cout << "A pilha tem conteúdo...\n";
@@ -86,8 +86,10 @@ int main(){
 	pilha2.push( "Biclicletas" );
 	std::cout << "Adicionando na pilha: \"Motos\"\n";
 	pilha2.push( "Motos" );
+	std::cout << "Adicionando na pilha: \"Velocípedes\"\n";
+	pilha2.push( "Velocípedes" );
 
-	std::cout << "Elemento do topo: " << pilha2.top() << std::endl;
+	//std::cout << "Elemento do topo: " << pilha2.top() << std::endl;
 
 	std::cout << ">>> Normal exiting...\n";
 

@@ -6,7 +6,7 @@ void StackAr<Object>::push( const Object &x ){
 	if (m_top < m_size){
 		m_stack[m_top] = x;
 		m_top++;
-	}else throw std::length_error( "[push()]: Não é possível inserir mais elementos." );
+	}else throw std::length_error( "[push()]: O Tamanho máximo dessa pilha foi alcançando.\n");	
 }
 
 template <class Object>
