@@ -89,7 +89,7 @@ int main(){
 	std::cout << "Adicionando na pilha: \"Velocípedes\"\n";
 	pilha2.push( "Velocípedes" );
 
-	//std::cout << "Elemento do topo: " << pilha2.top() << std::endl;
+	std::cout << "Elemento do topo: " << pilha2.top() << std::endl;
 
 	std::cout << ">>> Normal exiting...\n";
 
