@@ -45,7 +45,7 @@ void QueueAr<Object>::enqueue( const Object & x ){
 	}else{
 		if( m_back < m_front and pos == m_front ){
 			this->resize();
-		}	
+		}
 		else if( (m_back + 1 == m_size) && (pos >= m_front) ) {
 			pos = m_size;
 			this->_double();

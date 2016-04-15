@@ -49,24 +49,26 @@ int main(){
 	std::cout << " >>>> Elemento da frente na fila1: " << fila1.getFront() << std::endl;
 	std::cout << fila1 << std::endl;
 
-	std::cout << "Inserido os números de 14 à 50" << std::endl;
-	for( auto i = 14; i <= 50; i++)
+	std::cout << "Inserido os números de 14 à 22" << std::endl;
+	for( auto i = 14; i <= 22; i++)
 		fila1.enqueue( i );
+
 	
 	std::cout << " >>>> Elemento da frente na fila1: " << fila1.getFront() << std::endl;
 	std::cout << fila1 << std::endl;
 
-	std::cout << "Esvaziando a lista:\n";
+	std::cout << "Esvaziando a lista...\n";
 	fila1.makeEmpty();
 
 	is_empty = fila1.isEmpty();
 	(is_empty == 1) ? std::cout << ">>> Lista vazia...\n" : std::cout << ">>> Lista contém elementos...\n";
+	std::cout << fila1 << std::endl;
 
 	std::cout << "Declarando uma QueueAr:\n \t- NOME: fila2\n \t- TIPO DE VALORES: int\n";
 	QueueAr<int> lista2;
 
 	std::cout << "Inserindo os números 0, 10, 20, 30... 150\n";
-	for (int i = 0; i < 100; i+= 10 )
+	for (int i = 0; i <= 150; i+= 10 )
 		lista2.enqueue( i );
 
 	std::cout << lista2 << std::endl;
