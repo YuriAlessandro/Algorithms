@@ -49,7 +49,7 @@ public:
 			int diff = abs( _oList.m_back - _oList.m_front);
 			for( auto i = 0 ; i < _oList.m_back + 1 ; i++ )
 		        _os << _oList.m_queue[i] << " ";
-			_os << ".... " << diff << " EMPTY SPACES .... ";  
+			_os << ".... [" << diff << " EMPTY SPACES ].... ";  
 		    for( auto i = _oList.m_front; i < _oList.m_size - 1 ; i++ )
 		        _os << _oList.m_queue[i] << " ";
 		    _os << "] - TOTAL SIZE: " << _oList.m_size;
