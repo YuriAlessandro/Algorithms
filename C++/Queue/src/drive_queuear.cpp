@@ -1,6 +1,7 @@
 /* Arquivo de testes para uma fila genérica de objetos. */
 
 #include <iostream>
+#include <iomanip>
 
 #include "queuear.h"
 
@@ -65,14 +66,44 @@ int main(){
 	std::cout << fila1 << std::endl;
 
 	std::cout << "Declarando uma QueueAr:\n \t- NOME: fila2\n \t- TIPO DE VALORES: int\n";
-	QueueAr<int> lista2;
+	QueueAr<int> fila2;
 
 	std::cout << "Inserindo os números 0, 10, 20, 30... 150\n";
 	for (int i = 0; i <= 150; i+= 10 )
-		lista2.enqueue( i );
+		fila2.enqueue( i );
 
-	std::cout << lista2 << std::endl;
+	std::cout << fila2 << std::endl;
+
+	std::cout << "Esvaziando a lista...\n";
+	fila2.makeEmpty();
+
+	is_empty = fila2.isEmpty();
+	(is_empty == 1) ? std::cout << ">>> Lista vazia...\n" : std::cout << ">>> Lista contém elementos...\n";
+	std::cout << fila2 << std::endl;
 	
+	std::cout << std::setfill('=') << std::setw(100); 
+
+	std::cout << "\nDeclarando uma QueueAr:\n \t- NOME: Nomes\n \t- TIPO DE VALORES: strings\n";
+	QueueAr<std::string> Nomes;
+
+	Nomes.enqueue("Yuri");
+	Nomes.enqueue("Alessandro");
+	Nomes.enqueue("João");
+	Nomes.enqueue("José");
+	Nomes.enqueue("Silva");
+	Nomes.enqueue("Martins");
+	Nomes.enqueue("André");
+	Nomes.enqueue("Carlos");
+	Nomes.enqueue("Yuri");
+	Nomes.enqueue("João");
+
+	std::cout << Nomes << std::endl;
+
+	std::cout << "Desenfilerando... saiu: " << Nomes.dequeue() << std::endl;
+	std::cout << "Desenfilerando... saiu: " << Nomes.dequeue() << std::endl;
+	std::cout << "Desenfilerando... saiu: " << Nomes.dequeue() << std::endl;
+
+	std::cout << Nomes << std::endl;
 
 	std::cout << "Normal exiting...\n";
 	return EXIT_SUCCESS;
