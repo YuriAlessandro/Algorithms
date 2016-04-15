@@ -65,7 +65,7 @@ int main(){
 	std::cout << "Declarando uma QueueAr:\n \t- NOME: fila2\n \t- TIPO DE VALORES: int\n";
 	QueueAr<int> lista2;
 
-	std::cout << "Inserindo os números 0, 10, 20, 30... 150";
+	std::cout << "Inserindo os números 0, 10, 20, 30... 150\n";
 	for (int i = 0; i < 100; i+= 10 )
 		lista2.enqueue( i );
 
