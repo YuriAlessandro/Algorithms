@@ -38,18 +38,22 @@ void QueueAr<Object>::enqueue( const Object & x ){
 	
 	auto pos = (m_back + 1)%m_size;
 	
-	//if( m_front < m_size ){
-		if( m_front == -1 and m_back == -1 ){
-			m_front++;
-			m_back++;
-			m_queue[ m_front ] = x;
-		}else{
-			if( m_back < m_front ) this->resize();
-			else if( m_back == m_size ) this->_double();
-			m_queue[ pos ] = x;
-			m_back = pos;
+	if( m_front == -1 and m_back == -1 ){
+		m_front++;
+		m_back++;
+		m_queue[ m_front ] = x;
+	}else{
+		if( m_back < m_front ){
+			std::cout << "c1\n";
+			this->resize();
+		}	
+		else if( m_back + 1 == m_size ){
+			pos = m_size;
+			this->_double();
 		}
-	//}
+		m_queue[ pos ] = x;
+		m_back = pos;
+	}
 }
 
 template <class Object>
