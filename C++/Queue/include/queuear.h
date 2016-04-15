@@ -40,10 +40,20 @@ public:
 
 	inline friend std::ostream &operator<< (std::ostream& _os, const QueueAr & _oList ){
         //_oList.m_actualsz = _oList.m_size - _oList.m_front;
-        _os << "[ ";
-        for( auto i = _oList.m_front ; i < _oList.m_back + 1 ; i++ )
-            _os << _oList.m_queue[i] << " ";
-        _os << "] - ACTUAL SIZE: " << (_oList.m_back - _oList.m_front) + 1 << " - TOTAL SIZE: " << _oList.m_size;
+        _os << "FILA: [ ";
+        if ( _oList.m_front < _oList.m_back ){
+		    for( auto i = _oList.m_front ; i < _oList.m_back + 1 ; i++ )
+		        _os << _oList.m_queue[i] << " ";
+		    _os << "] - TOTAL SIZE: " << _oList.m_size;
+		}else{
+			int diff = abs( _oList.m_back - _oList.m_front);
+			for( auto i = 0 ; i < _oList.m_back + 1 ; i++ )
+		        _os << _oList.m_queue[i] << " ";
+			_os << ".... " << diff << " EMPTY SPACES .... ";  
+		    for( auto i = _oList.m_front; i < _oList.m_size - 1 ; i++ )
+		        _os << _oList.m_queue[i] << " ";
+		    _os << "] - TOTAL SIZE: " << _oList.m_size;
+		}
         return _os;
     }
 

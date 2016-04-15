@@ -5,17 +5,19 @@
 
 template <class Object>
 void QueueAr<Object>::resize( ){
-	std::cout << "Drobrando/reorganizando fila...\n";
-	
 	Object* _rsz = new Object[ m_size*2 ];
 
-	auto j = m_size * 2;
-	for( int i = m_size; i >= m_front; i--){
-		m_queue[i] = _rsz[j];
-		j--;			
+	auto j = ( m_size * 2 ) - 1;
+	for( int i = m_size - 1; i >= m_front; i--){
+		_rsz[j] = m_queue[i];
+		j--;
 	}
+
+	m_front = j + 1;
 	
-	std::memcpy( _rsz, m_queue, ( sizeof(Object) * m_front ) - 1 );	
+	int copy = m_front ;
+
+	std::memcpy( _rsz, m_queue, sizeof(Object) * copy );	
 	delete [] m_queue;
 	m_size*=2;
 	m_queue = _rsz;
@@ -23,8 +25,6 @@ void QueueAr<Object>::resize( ){
 
 template <class Object>
 void QueueAr<Object>::_double( ){
-	std::cout << "Dobrando tamanho da fila...\n";
-
 	Object* _rsz = new Object[ m_size*2 ];
 	std::memcpy( _rsz, m_queue, sizeof(Object)*m_size );
 	delete [] m_queue;
@@ -43,11 +43,10 @@ void QueueAr<Object>::enqueue( const Object & x ){
 		m_back++;
 		m_queue[ m_front ] = x;
 	}else{
-		if( m_back < m_front ){
-			std::cout << "c1\n";
+		if( m_back < m_front and pos == m_front ){
 			this->resize();
 		}	
-		else if( m_back + 1 == m_size ){
+		else if( (m_back + 1 == m_size) && (pos >= m_front) ) {
 			pos = m_size;
 			this->_double();
 		}
