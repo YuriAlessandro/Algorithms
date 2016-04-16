@@ -7,7 +7,12 @@
 
 int main(){
 
-	std::cout << "Declarando uma QueueAr:\n \t- NOME: fila1\n \t- TIPO DE VALORES: int\n";
+	std::cout << "\nRodando testes com fila...\n";
+	std::cout << "\tO elemento com < ! > marca o ínico da fila.\n\n";
+	
+	std::cout << std::setfill('=') << std::setw(100); 
+
+	std::cout << "\nDeclarando uma QueueAr:\n \t- NOME: fila1\n \t- TIPO DE VALORES: int\n";
 	QueueAr<int> fila1;
 
 	bool is_empty = fila1.isEmpty();
@@ -50,13 +55,13 @@ int main(){
 	std::cout << " >>>> Elemento da frente na fila1: " << fila1.getFront() << std::endl;
 	std::cout << fila1 << std::endl;
 
-	std::cout << "Inserido os números de 14 à 22" << std::endl;
-	for( auto i = 14; i <= 22; i++)
-		fila1.enqueue( i );
-
+	for (int i = 0; i < 20; ++i){
+		std::cout << "Desenfilerando... saiu: " << fila1.dequeue() << std::endl;
+	}
 	
 	std::cout << " >>>> Elemento da frente na fila1: " << fila1.getFront() << std::endl;
 	std::cout << fila1 << std::endl;
+
 
 	std::cout << "Esvaziando a lista...\n";
 	fila1.makeEmpty();
@@ -65,7 +70,9 @@ int main(){
 	(is_empty == 1) ? std::cout << ">>> Lista vazia...\n" : std::cout << ">>> Lista contém elementos...\n";
 	std::cout << fila1 << std::endl;
 
-	std::cout << "Declarando uma QueueAr:\n \t- NOME: fila2\n \t- TIPO DE VALORES: int\n";
+	std::cout << std::setfill('=') << std::setw(100);
+
+	std::cout << "\nDeclarando uma QueueAr:\n \t- NOME: fila2\n \t- TIPO DE VALORES: int\n";
 	QueueAr<int> fila2;
 
 	std::cout << "Inserindo os números 0, 10, 20, 30... 150\n";

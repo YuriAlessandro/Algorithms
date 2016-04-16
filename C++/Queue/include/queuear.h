@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <functional>
+#include <stdlib.h>
 
 #include "AbsQueue.h"
 
@@ -39,22 +40,27 @@ public:
 	void makeEmpty ( );
 
 	inline friend std::ostream &operator<< (std::ostream& _os, const QueueAr & _oList ){
-        //_oList.m_actualsz = _oList.m_size - _oList.m_front;
         _os << "FILA: [ ";
         if( _oList.m_front != -1 and _oList.m_back != -1 ){
 	        if ( _oList.m_front < _oList.m_back ){
-			    for( auto i = _oList.m_front ; i < _oList.m_back + 1 ; i++ )
-			        _os << _oList.m_queue[i] << " ";
+			    for( auto i = _oList.m_front ; i < _oList.m_back + 1 ; i++ ){
+			        if (i == _oList.m_front) _os << "< " << _oList.m_queue[i] << " > ";
+			        else _os << _oList.m_queue[i] << " ";
+			    }
 			}else{
 				int diff = abs( _oList.m_back - _oList.m_front + 1);
 				
-				for( auto i = 0 ; i < _oList.m_back + 1 ; i++ )
-			        _os << _oList.m_queue[i] << " ";
+				for( auto i = 0 ; i < _oList.m_back + 1 ; i++ ){
+			        if (i == _oList.m_front) _os << " < " << _oList.m_queue[i] << " > ";
+			        else _os << _oList.m_queue[i] << " ";
+			    }
 				
 				if (diff != 0) _os << ".... [" << diff << " EMPTY SPACES ].... ";  
 			    
-			    for( auto i = _oList.m_front; i < _oList.m_size ; i++ )
-			        _os << _oList.m_queue[i] << " ";
+			    for( auto i = _oList.m_front; i < _oList.m_size ; i++ ){
+			        if (i == _oList.m_front) _os << " < " << _oList.m_queue[i] << " > ";
+			        else _os << _oList.m_queue[i] << " ";
+			    }
 			}
 		}
 		    _os << "] - TOTAL SIZE: " << _oList.m_size;
