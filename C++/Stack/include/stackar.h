@@ -2,6 +2,7 @@
 #define _STACKAR_H_
 
 #include <iostream>
+#include <AbsStack.h>
 
 template <class Object>
 class StackAr : public AbsStack<Object>{
@@ -23,6 +24,17 @@ public:
 
 	bool isEmpty( ) const;
 	void makeEmpty( );
+
+	inline friend std::ostream &operator<< (std::ostream& _os, const StackAr& _oList )
+        {
+            _os << "STACK: [ ";
+            for( int i(0) ; i < _oList.m_top ; i++ ){
+                if (i == _oList.m_top - 1) _os << "< " << _oList.m_stack[i] << " >  ";
+                else _os << _oList.m_stack[i] << " ";
+            }
+            _os << "]";
+            return _os;
+        }
 
 }; 
 

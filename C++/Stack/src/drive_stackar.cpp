@@ -14,6 +14,8 @@ int main(){
 	bool cnt = pilha1.isEmpty();
 	(cnt == 1) ? std::cout << "A pilha está vazia...\n" : std::cout << "A pilha tem conteúdo...\n";
 	
+	std::cout << pilha1 << std::endl;
+	
 	std::cout << "Adicionando na pilha: 2.3\n";
 	pilha1.push( 2.3 );
 	std::cout << "Adicionando na pilha: 5.4\n";
@@ -24,11 +26,15 @@ int main(){
 	cnt = pilha1.isEmpty();
 	(cnt == 1) ? std::cout << "A pilha está vazia...\n" : std::cout << "A pilha tem conteúdo...\n";
 
+	std::cout << pilha1 << std::endl;
+
 	std::cout << "Elemento do topo: " << pilha1.top() << std::endl;
 
 	std::cout << "Removendo elemento do topo da pilha...\n";
 	
 	std::cout << "Elemento removido: "<< pilha1.pop(  ) << std::endl;
+
+	std::cout << pilha1 << std::endl;
 
 	std::cout << "Elemento do topo: " << pilha1.top() << std::endl;
 
