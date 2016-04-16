@@ -44,19 +44,21 @@ public:
         if( _oList.m_front != -1 and _oList.m_back != -1 ){
 	        if ( _oList.m_front < _oList.m_back ){
 			    for( auto i = _oList.m_front ; i < _oList.m_back + 1 ; i++ ){
-			        if (i == _oList.m_front) _os << "< " << _oList.m_queue[i] << " > ";
+			        if ( i == _oList.m_front ) _os << "< " << _oList.m_queue[i] << " > ";
 			        else _os << _oList.m_queue[i] << " ";
 			    }
 			}else{
 				int diff = abs( _oList.m_back - _oList.m_front + 1);
 				
 				for( auto i = 0 ; i < _oList.m_back + 1 ; i++ ){
-			        if (i == _oList.m_front) _os << " < " << _oList.m_queue[i] << " > ";
+			        if ( i == _oList.m_front ) _os << " < " << _oList.m_queue[i] << " > ";
 			        else _os << _oList.m_queue[i] << " ";
 			    }
 				
-				if (diff != 0) _os << ".... [" << diff << " EMPTY SPACES ].... ";  
-			    
+				if (diff != 0){ 
+					(diff == 1) ? _os << ".... [ " << diff << " EMPTY SPACE ].... " : _os << ".... [ " << diff << " EMPTY SPACES ].... " ;  
+			    }
+
 			    for( auto i = _oList.m_front; i < _oList.m_size ; i++ ){
 			        if (i == _oList.m_front) _os << " < " << _oList.m_queue[i] << " > ";
 			        else _os << _oList.m_queue[i] << " ";
