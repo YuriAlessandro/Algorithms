@@ -40,7 +40,7 @@ public:
 	void makeEmpty ( );
 
 	inline friend std::ostream &operator<< (std::ostream& _os, const QueueAr & _oList ){
-        _os << "FILA: [ ";
+        _os << "QUEUE: [ ";
         if( _oList.m_front != -1 and _oList.m_back != -1 ){
 	        if ( _oList.m_front < _oList.m_back ){
 			    for( auto i = _oList.m_front ; i < _oList.m_back + 1 ; i++ ){
