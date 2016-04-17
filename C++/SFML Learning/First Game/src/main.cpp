@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cstdlib>
+#include <sstream>
 
 #include "game_constants.h"
 
@@ -7,7 +9,15 @@ bool Collision(sf::FloatRect _person, sf::FloatRect _enemy){
     return _person.intersects(_enemy);
 }
 
+sf::RectangleShape creat_ghost( const float & enemy_width = 400, const float enemy_height = 260){
+    sf::RectangleShape enemy(sf::Vector2f(32, 32));
+    enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
+    return enemy;
+}
+
 int main(void) {
+    int level_game = 1;
+
     // Cria uma janela
     sf::RenderWindow main_window(sf::VideoMode(SCRWIDTH,SCRHEIGHT), "Monster Divert");
 
@@ -38,27 +48,31 @@ int main(void) {
     instruction.setCharacterSize(10);
     instruction.setString("Try to reach the other side without hitting any enemies.");
     instruction.setPosition(150, 70);
-
+    /******************************************************/
     sf::Text game_over;
     game_over.setFont(font1);
     game_over.setCharacterSize(50);
     game_over.setString("GAME OVER");
-    game_over.setPosition(SCRWIDTH/2.0f, SCRHEIGHT/2.0f);
+    sf::FloatRect textRect_go = game_over.getLocalBounds();
+    game_over.setOrigin(textRect_go.left + textRect_go.width/2.0f, textRect_go.top  + textRect_go.height/2.0f);
+    game_over.setPosition(sf::Vector2f(SCRWIDTH/2.0f, 200));
     /******************************************************/
-
+    
     /****************** CREATING A SPRITE ******************/
     sf::Texture t_background;
     t_background.loadFromFile(BACKGROUND_IMG, sf::IntRect(10, 10, 800, 600));
 
     sf::Sprite s_background;
     s_background.setTexture(t_background);
+    /******************************************************/
+    sf::Texture t_ghost;
+    t_ghost.loadFromFile(ENEMY_G);
 
+    sf::Texture t_ciclop;
+    t_ciclop.loadFromFile(ENEMY_C);
     /******************************************************/
     sf::Texture t_person;
     t_person.loadFromFile(PERSON_IMG);
-    /******************************************************/
-    sf::Texture t_enemy;
-	t_enemy.loadFromFile(ENEMY_IMG);
 	/******************************************************/
 	sf::Texture t_level;
 	t_level.loadFromFile(LEVEL_IMG);
@@ -79,18 +93,30 @@ int main(void) {
     person.setPosition(sf::Vector2f(person_width, person_height));
     /******************************************************/
 
-	/****************** CREATING A ENEMY ******************/
-	sf::RectangleShape enemy(sf::Vector2f(32, 32));
-	enemy.setOutlineColor(sf::Color::White);
-	enemy.setTexture(&t_enemy);
-	float enemy_width = 400;
-	float enemy_height = 260;
-	enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
-    /******************************************************/
     // Variavel do loop principal
     bool is_running = true;
+    
+    bool right = false, left = false, up = false, down = false, run = true;
 
-    bool right = false, left = false, up = false, down = false;
+    int born_ghost = rand()%(300-205) + 205;
+    int born_ciclop = rand()%(300-205) + 205;
+    
+    sf::RectangleShape ghosts[100];
+    
+    for (int i = 0; i < 100; i++){
+        ghosts[i] = creat_ghost(601, born_ghost);
+        ghosts[i].setTexture(&t_ghost);
+    }
+
+    sf::RectangleShape ciclops[100];
+    
+    for (int i = 0; i < 100; i++){
+        ciclops[i] = creat_ghost(601, born_ciclop);
+        ciclops[i].setTexture(&t_ciclop);
+    }
+
+    int mob_appear = 0;
+
 
     while (is_running) {
         // Enquanto existir events coloque na variavel "event"
@@ -114,15 +140,26 @@ int main(void) {
         main_window.draw(instruction);
         main_window.draw(person);
 
-        if(down or up or right or left){
-            enemy_width -= 0.05;
-            enemy_height += 0.002;
-            enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
-            main_window.draw(enemy);
+
+        if (run == true){
+            ghosts[mob_appear].setPosition(sf::Vector2f( ghosts[mob_appear].getPosition().x - 0.05, ghosts[mob_appear].getPosition().y  ));
+            if( Collision( person.getGlobalBounds(), ghosts[mob_appear].getGlobalBounds() ) == true ) run = false;
+            main_window.draw(ghosts[mob_appear]);
+        }
+        
+        if (run == true){
+            ciclops[mob_appear].setPosition(sf::Vector2f( ciclops[mob_appear].getPosition().x - 0.05, ciclops[mob_appear].getPosition().y  ));
+            if( Collision( person.getGlobalBounds(), ciclops[mob_appear].getGlobalBounds() ) == true ) run = false;
+            main_window.draw(ciclops[mob_appear]);
         }
 
+        if (ciclops[mob_appear].getPosition().x <= 0){
+            mob_appear++;
+        }
+        
+
         if (right == true){
-            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+            if( Collision( person.getGlobalBounds(), ghosts[mob_appear].getGlobalBounds() ) == false ){
                 if( person_width <= 555 ) person_width += 0.05;
                 person.setPosition(sf::Vector2f( person_width, person_height ));
                 main_window.draw(person);
@@ -131,7 +168,7 @@ int main(void) {
         }
 
         if (left == true){
-            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+            if( Collision( person.getGlobalBounds(), ghosts[mob_appear].getGlobalBounds() ) == false ){
                 if( person_width >= 0) person_width -= 0.05;
                 person.setPosition(sf::Vector2f( person_width, person_height ));
                 main_window.draw(person);
@@ -140,7 +177,7 @@ int main(void) {
         }
 
         if (up == true){
-            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+            if( Collision( person.getGlobalBounds(), ghosts[mob_appear].getGlobalBounds() ) == false ){
                 if(person_height >= 205) person_height -= 0.05;
                 person.setPosition(sf::Vector2f( person_width, person_height ));
                 main_window.draw(person);
@@ -149,30 +186,29 @@ int main(void) {
         }
 
         if (down == true){
-            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+            if( Collision( person.getGlobalBounds(), ghosts[mob_appear].getGlobalBounds() ) == false ){
                 if(person_height <= 355) person_height += 0.05;
                 person.setPosition(sf::Vector2f( person_width, person_height ));
                 main_window.draw(person);
             }
+            level_game++;
             down = false;
         }
 
-
-        if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) ){
+        if( Collision( person.getGlobalBounds(), ghosts[mob_appear].getGlobalBounds() ) ){
             main_window.draw(game_over);
             main_window.display();
         }
         
-        
         main_window.display();
+
 
         //Fecha a janela se ESC for pressionado
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
             main_window.close();
             return EXIT_SUCCESS;
         }
-    }
-
+    }    
     // Fecha a main_window
     main_window.close();
 
