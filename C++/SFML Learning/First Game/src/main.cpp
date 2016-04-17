@@ -5,7 +5,7 @@
 
 int main(void) {
     // Cria uma janela
-    sf::RenderWindow main_window(sf::VideoMode(SCRWIDTH,SCRHEIGHT), "First Game");
+    sf::RenderWindow main_window(sf::VideoMode(SCRWIDTH,SCRHEIGHT), "Monster Divert");
 
     // Variavel para eventos
     sf::Event event;
@@ -21,7 +21,7 @@ int main(void) {
     title.setColor(sf::Color::White);
     title.setStyle(sf::Text::Regular);
     title.setCharacterSize(50);
-    title.setString("First Game");
+    title.setString("Monster Divert");
     title.setPosition(100, 100);
     /******************************************************/
     // Isso cria um retângulo no centro da tela, e encaixa o texto dentro dele (centraliza o texto na tela)
@@ -29,6 +29,12 @@ int main(void) {
     title.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
     title.setPosition(sf::Vector2f(SCRWIDTH/2.0f, 50));
     /******************************************************/
+    sf::Text instruction;
+    instruction.setFont(font1);
+    instruction.setCharacterSize(10);
+    instruction.setString("Try to reach the other side without hitting any enemies.");
+    instruction.setPosition(150, 70);
+
     sf::Text game_over;
     game_over.setFont(font1);
     game_over.setCharacterSize(50);
@@ -65,7 +71,7 @@ int main(void) {
     person.setOutlineColor(sf::Color::White);
     person.setTexture(&t_person);
     float person_width = 1;
-    float person_height = 200;
+    float person_height = 300;
     person.setPosition(sf::Vector2f(person_width, person_height));
     /******************************************************/
 
@@ -74,7 +80,7 @@ int main(void) {
 	enemy.setOutlineColor(sf::Color::White);
 	enemy.setTexture(&t_enemy);
 	float enemy_width = 400;
-	float enemy_height = 200;
+	float enemy_height = 260;
 	enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
 
 	/******************************************************/
@@ -103,6 +109,7 @@ int main(void) {
         main_window.draw(s_background);
         main_window.draw(level);
         main_window.draw(title);
+        main_window.draw(instruction);
         main_window.draw(person);
 
         enemy_width -= 0.02;
