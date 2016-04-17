@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-const int SCRWIDTH = 800;
-const int SCRHEIGHT = 600; 
+const int SCRWIDTH = 600;
+const int SCRHEIGHT = 400; 
 
 
 int main(void){
@@ -21,7 +21,7 @@ int main(void){
 	/******************* CREATING TEXTS *******************/
 	sf::Text title;
 	title.setFont(font1);
-	title.setColor(sf::Color::Black);
+	title.setColor(sf::Color::White);
 	title.setStyle(sf::Text::Regular);
 	title.setCharacterSize(50);
 	title.setString("My First Program");
@@ -31,6 +31,14 @@ int main(void){
 	sf::FloatRect textRect = title.getLocalBounds();
 	title.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
 	title.setPosition(sf::Vector2f( SCRWIDTH/2.0f, 50 ));
+	/******************************************************/
+
+	/****************** CREATING A SPRIT ******************/
+	sf::Texture t_background;
+	t_background.loadFromFile("background.jpg", sf::IntRect(10, 10, 800, 600));
+
+	sf::Sprite s_background;
+	s_background.setTexture(t_background);
 	/******************************************************/
 
 	// Variavel do loop principal
@@ -46,6 +54,7 @@ int main(void){
 		// Preenche a tela com uma cor
 		main_window.clear(sf::Color::White);
 		
+		main_window.draw(s_background);
 		main_window.draw(title);
 
 		// Mostra a main_window
