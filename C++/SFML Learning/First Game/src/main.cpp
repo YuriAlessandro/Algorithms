@@ -3,6 +3,10 @@
 
 #include "game_constants.h"
 
+bool Collision(sf::FloatRect _person, sf::FloatRect _enemy){
+    return _person.intersects(_enemy);
+}
+
 int main(void) {
     // Cria uma janela
     sf::RenderWindow main_window(sf::VideoMode(SCRWIDTH,SCRHEIGHT), "Monster Divert");
@@ -82,9 +86,7 @@ int main(void) {
 	float enemy_width = 400;
 	float enemy_height = 260;
 	enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
-
-	/******************************************************/
-
+    /******************************************************/
     // Variavel do loop principal
     bool is_running = true;
 
@@ -112,45 +114,63 @@ int main(void) {
         main_window.draw(instruction);
         main_window.draw(person);
 
-        enemy_width -= 0.02;
-		enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
-		main_window.draw(enemy);
+        if(down or up or right or left){
+            enemy_width -= 0.05;
+            enemy_height += 0.002;
+            enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
+            main_window.draw(enemy);
+        }
 
         if (right == true){
-			if( person_width <= 555 ) person_width += 0.05;
-			person.setPosition(sf::Vector2f( person_width, person_height ));
-			main_window.draw(person);
-			right = false;
-		}
+            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+                if( person_width <= 555 ) person_width += 0.05;
+                person.setPosition(sf::Vector2f( person_width, person_height ));
+                main_window.draw(person);
+            }
+            right = false;
+        }
 
-		if (left == true){
-			if( person_width >= 0) person_width -= 0.05;
-			person.setPosition(sf::Vector2f( person_width, person_height ));
-			main_window.draw(person);
-			left = false;
-		}
+        if (left == true){
+            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+                if( person_width >= 0) person_width -= 0.05;
+                person.setPosition(sf::Vector2f( person_width, person_height ));
+                main_window.draw(person);
+            }
+            left = false;
+        }
 
-		if (up == true){
-			if(person_height >= 205) person_height -= 0.05;
-			person.setPosition(sf::Vector2f( person_width, person_height ));
-			main_window.draw(person);
-			up = false;
-		}
+        if (up == true){
+            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+                if(person_height >= 205) person_height -= 0.05;
+                person.setPosition(sf::Vector2f( person_width, person_height ));
+                main_window.draw(person);
+            }
+            up = false;
+        }
 
-		if (down == true){
-			if(person_height <= 355) person_height += 0.05;
-			person.setPosition(sf::Vector2f( person_width, person_height ));
-			main_window.draw(person);
-			down = false;
-		}
-    
-		main_window.display();
+        if (down == true){
+            if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) == false ){
+                if(person_height <= 355) person_height += 0.05;
+                person.setPosition(sf::Vector2f( person_width, person_height ));
+                main_window.draw(person);
+            }
+            down = false;
+        }
 
-		//Fecha a janela se ESC for pressionado
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-    		main_window.close();
-    		return EXIT_SUCCESS;
-		}
+
+        if( Collision( person.getGlobalBounds(), enemy.getGlobalBounds() ) ){
+            main_window.draw(game_over);
+            main_window.display();
+        }
+        
+        
+        main_window.display();
+
+        //Fecha a janela se ESC for pressionado
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+            main_window.close();
+            return EXIT_SUCCESS;
+        }
     }
 
     // Fecha a main_window
