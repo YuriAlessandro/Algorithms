@@ -33,7 +33,7 @@ int main(void){
 	title.setPosition(sf::Vector2f( SCRWIDTH/2.0f, 50 ));
 	/******************************************************/
 
-	/****************** CREATING A SPRIT ******************/
+	/****************** CREATING A SPRITE ******************/
 	sf::Texture t_background;
 	t_background.loadFromFile("background.jpg", sf::IntRect(10, 10, 800, 600));
 
@@ -41,6 +41,16 @@ int main(void){
 	s_background.setTexture(t_background);
 	/******************************************************/
 
+	/***************** CREATING A BUTTON ******************/
+	sf::RectangleShape exit_button(sf::Vector2f(100, 40));
+	exit_button.setFillColor(sf::Color::Black);
+	exit_button.setOutlineThickness(4);
+	exit_button.setOutlineColor(sf::Color::White);
+	exit_button.setPosition(sf::Vector2f( 50, 320 ));
+	/******************************************************/
+
+	sf::Vector2i exitButton_Position = sf::Mouse::getPosition(main_window);
+	
 	// Variavel do loop principal
 	bool is_running = true;
 
@@ -56,15 +66,22 @@ int main(void){
 		
 		main_window.draw(s_background);
 		main_window.draw(title);
+		main_window.draw(exit_button);
+
 
 		// Mostra a main_window
 		main_window.display();
 
+		//Fecha a janela se ESC for pressionado
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+    		main_window.close();
+    		return EXIT_SUCCESS;
+		}
+	
 	}
 
 	// Fecha a main_window
 	main_window.close();
 
-	// Ocorreu tudo bem
 	return EXIT_SUCCESS;
 }
