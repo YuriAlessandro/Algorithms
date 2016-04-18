@@ -9,7 +9,7 @@ bool Collision(sf::FloatRect _person, sf::FloatRect _enemy){
     return _person.intersects(_enemy);
 }
 
-sf::RectangleShape creat_ghost( const float & enemy_width = 400, const float enemy_height = 260){
+sf::RectangleShape create_monster( const float & enemy_width = 400, const float enemy_height = 260){
     sf::RectangleShape enemy(sf::Vector2f(32, 32));
     enemy.setPosition(sf::Vector2f( enemy_width, enemy_height ));
     return enemy;
@@ -104,14 +104,14 @@ int main(void) {
     sf::RectangleShape ghosts[100];
     
     for (int i = 0; i < 100; i++){
-        ghosts[i] = creat_ghost(601, born_ghost);
+        ghosts[i] = create_monster(601, born_ghost);
         ghosts[i].setTexture(&t_ghost);
     }
 
     sf::RectangleShape ciclops[100];
     
     for (int i = 0; i < 100; i++){
-        ciclops[i] = creat_ghost(601, born_ciclop);
+        ciclops[i] = create_monster(601, born_ciclop);
         ciclops[i].setTexture(&t_ciclop);
     }
 
