@@ -111,10 +111,14 @@ bool pushBack( SNPtr & _pAIL, int _newVal ){
 
 bool popFront( SNPtr & _pAIL, int & _retrievedVal ){
     if( _pAIL != NULL ){
-
+    	_retrievedVal = _pAIL->miData;
+    	SNPtr work = _pAIL->mpNext;
+    	delete _pAIL;
+    	_pAIL = work;
+    	return true;
     }
+    return false;
     
-    return true;
 }
 
 
@@ -129,8 +133,9 @@ bool popBack( SNPtr & _pAIL, int& _retrievedVal ){
         _retrievedVal = tail->miData;
         delete tail;
         work->mpNext = NULL;
+    	return true;
     }
-    return true;
+    return false;
 }
 
 

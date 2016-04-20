@@ -56,9 +56,16 @@ int main ( void ) {
     pushFront( pHead, 10 );
 
     print( pHead );
-    int pop;
-    popBack( pHead, pop );
-    cout << "Pop back: " << pop << std::endl;
+    
+    int pop_b;
+    popBack( pHead, pop_b );
+    cout << "Pop back: " << pop_b << std::endl;
+
+    print( pHead );
+
+    int pop_f;
+    popFront( pHead, pop_f );
+    cout << "Pop front: " << pop_f << std::endl;
 
     print( pHead );
  
