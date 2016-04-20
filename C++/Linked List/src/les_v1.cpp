@@ -121,13 +121,15 @@ bool popFront( SNPtr & _pAIL, int & _retrievedVal ){
 bool popBack( SNPtr & _pAIL, int& _retrievedVal ){
     if( _pAIL != NULL ){
         SNPtr work = _pAIL;
-        while( work->mpNext != NULL ){
+        SNPtr tail = _pAIL->mpNext;
+        while( tail->mpNext != NULL ){
             work = work->mpNext;
+        	tail = tail->mpNext;
         }
-        _retrievedVal = work->miData;
-        delete work;
+        _retrievedVal = tail->miData;
+        delete tail;
+        work->mpNext = NULL;
     }
-    
     return true;
 }
 

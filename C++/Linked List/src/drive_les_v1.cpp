@@ -10,15 +10,13 @@ int main ( void ) {
 
     cout << std::endl;
     bool is_empty = empty( pHead );
-    (is_empty == 1) ? cout << "Vazio\n" : cout << "Tem conteúdo\n";
-    
+    (is_empty == 1) ? cout << "List -> Empty\n" : cout << "List -> Not Empty\n";
 
-    pushBack( pHead, 100 );
-
-	print( pHead );
-
+    cout << "PushFront [3]\n";
     pushFront( pHead, 3 );
+    cout << "PushFront [2]\n";
     pushFront( pHead, 2 );
+    cout << "PushFront [1]\n";
     pushFront( pHead, 1 );
     
     print( pHead );
@@ -27,29 +25,35 @@ int main ( void ) {
 
     int val_front;
     front( pHead, val_front );
-    cout << "Valor da frente: " << val_front << std::endl;
+    cout << "Front: " << val_front << std::endl;
 
     int val_back;
     back( pHead, val_back );
-    cout << "Valor de trás: " << val_back << std::endl;
+    cout << "Back: " << val_back << std::endl;
 
+	cout << "PushFront [4]\n";
 	pushBack( pHead, 4 );
+	cout << "PushFront [5]\n";
 	pushBack( pHead, 5 );
+	cout << "PushFront [6]\n";
 	pushBack( pHead, 6 );
 
 	print( pHead );
 
-	cout << "\nLimpando...\n";
+	cout << "\nClear...\n";
 	clear( pHead );
 
 	is_empty = empty( pHead );
-    (is_empty == 1) ? cout << "Vazio\n" : cout << "Tem conteúdo\n";
+    (is_empty == 1) ? cout << "List -> Empty\n" : cout << "List -> Not Empty\n";
 
     print( pHead );
 
-    pushFront( pHead, 3 );
-    pushFront( pHead, 2 );
-    pushFront( pHead, 1 );
+    cout << "PushFront [30]\n";
+    pushFront( pHead, 30 );
+    cout << "PushFront [20]\n";
+    pushFront( pHead, 20 );
+    cout << "PushFront [10]\n";
+    pushFront( pHead, 10 );
 
     print( pHead );
     int pop;
