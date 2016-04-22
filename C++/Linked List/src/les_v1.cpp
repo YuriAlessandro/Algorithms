@@ -140,7 +140,17 @@ bool popBack( SNPtr & _pAIL, int& _retrievedVal ){
 
 
 SNPtr find( SNPtr _pAIL, int _targetVal ){
-    return NULL;
+    if( _pAIL != NULL and _pAIL->mpNext != NULL  ){
+    	SNPtr work = _pAIL->mpNext;
+    	SNPtr previous = _pAIL;
+    	while( work->miData != _targetVal and work != NULL){
+    		work = work->mpNext;
+    		previous = previous->mpNext;
+    	}
+    	return previous;
+    }else{
+    	return NULL;
+    }	
 }
 
 

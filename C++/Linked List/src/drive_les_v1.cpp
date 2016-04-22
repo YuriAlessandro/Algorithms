@@ -54,12 +54,13 @@ int main ( void ) {
     pushFront( pHead, 20 );
     cout << "PushFront [10]\n";
     pushFront( pHead, 10 );
-
+    
     print( pHead );
+    
     
     int pop_b;
     popBack( pHead, pop_b );
-    cout << "Pop back: " << pop_b << std::endl;
+    cout << "\nPop back: " << pop_b << std::endl;
 
     print( pHead );
 
