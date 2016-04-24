@@ -69,6 +69,20 @@ int main ( void ) {
     cout << "Pop front: " << pop_f << std::endl;
 
     print( pHead );
+
+    cout << "PushBack [40]\n";
+    pushBack( pHead, 40 );
+    cout << "PushBack [50]\n";
+    pushBack( pHead, 50 );
+    cout << "PushBack [60]\n";
+    pushBack( pHead, 60 );
+
+    print( pHead );
+
+    std::cout << "Try to found the node before [50]\n";
+    SNPtr finded = find( pHead, 50 );
+    print( finded );
+    
  
     cout << "\n\n>>> Normal exiting...\n";
     return EXIT_SUCCESS;

@@ -11,7 +11,7 @@ using namespace std;
  *  @param _pAIL Pointer to the head of the list. It NULL, list is empty.
  */
 void print( SNPtr _pAIL ){
-    cout << "{ ";
+    cout << "The Linked List: { ";
     while( _pAIL != NULL ){
         cout << _pAIL->miData << " ";
         _pAIL = _pAIL->mpNext;
@@ -147,6 +147,7 @@ SNPtr find( SNPtr _pAIL, int _targetVal ){
     		work = work->mpNext;
     		previous = previous->mpNext;
     	}
+    	previous->mpNext = NULL;
     	return previous;
     }else{
     	return NULL;
