@@ -147,22 +147,64 @@ SNPtr find( SNPtr _pAIL, int _targetVal ){
     		work = work->mpNext;
     		previous = previous->mpNext;
     	}
-    	previous->mpNext = NULL;
     	return previous;
-    }else{
-    	return NULL;
-    }	
+    }
+    return NULL;	
 }
 
 
 bool insert( SNPtr & _pAIL, SNPtr _pAnte, int _newVal ){
-    return true;
+	SNPtr aux = _pAIL;
+	SNPtr aux_ante = _pAnte;
+    
+	if ( _pAnte == NULL or _pAnte == _pAIL){
+		pushFront(_pAIL, _newVal);
+		return true;
+	}
+    
+	if (pushFront(_pAnte, _newVal)) {
+    	while ( _pAIL != NULL and _pAIL->mpNext != aux_ante )
+        	_pAIL = _pAIL->mpNext; 
+
+		if( _pAIL == NULL ){
+			_pAIL = aux;
+			return false;
+		}
+
+        _pAIL->mpNext = _pAnte;
+        _pAIL = aux;
+        return true;
+    }
+    return false;
 }
 
 
 bool remove( SNPtr & _pAIL, SNPtr _pAnte, int & _retrievedVal ){
+    SNPtr aux;
+    SNPtr aux_next;
+    if ( _pAnte == NULL ){
+    	_retrievedVal = _pAIL->miData;
+    	aux = _pAIL->mpNext;
+    	delete _pAIL;
+    	_pAIL = aux;
+    	return true;
+    }
+
+  	aux = _pAIL;
+  	aux_next = (_pAnte->mpNext)->mpNext;
+    
+    while( _pAIL != NULL and _pAIL != _pAnte )
+    	_pAIL = _pAIL->mpNext;
+
+    if ( _pAIL == NULL ) {
+    	_pAIL = aux;
+    	return false;
+    }
+
+    _retrievedVal = (_pAIL->mpNext)->miData;	
+    delete _pAIL->mpNext;
+    _pAIL->mpNext = aux_next;
+    _pAIL = aux;
     return true;
 }
-
-
 //**** ===================[ End of les_v1.cpp ]=================== ****// 
