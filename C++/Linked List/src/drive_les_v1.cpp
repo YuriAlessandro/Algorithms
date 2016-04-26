@@ -46,7 +46,7 @@ int main ( void ) {
 	pushBack( pHead, 5 );
 	cout << "PushFront [6]\n";
 	pushBack( pHead, 6 );
-
+	
 	print( pHead );
     //////////////////////////
 
@@ -98,8 +98,8 @@ int main ( void ) {
 
     // TEST 'find':
     cout << "Try to found the node before [50]\n";
-    SNPtr finded = find( pHead, 50 );
-    print( finded );
+    SNPtr found = find( pHead, 50 );
+    print( found );
     //////////////////////////
 
     // TEST 'insert':
