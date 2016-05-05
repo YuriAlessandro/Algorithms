@@ -58,8 +58,13 @@ void QueueAr<Object>::enqueue( const Object & x ){
 template <class Object>
 Object QueueAr<Object>::dequeue ( ){
 	Object last = m_queue[ m_front ];
-	m_front = (m_front+1)%m_size;
-	return last;
+	if ( m_front == m_back ){
+            m_front = -1;
+            m_back = -1;
+        }else{
+            m_front = ( m_front + 1 ) % m_size;
+        }
+        return last;
 }
 
 template <class Object>
