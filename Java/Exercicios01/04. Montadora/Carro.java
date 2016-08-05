@@ -156,14 +156,14 @@ public class Carro{
     	if(farol.getEstado())
     		System.out.println("O farol ja esta ligado.");
     	else
-    		farol.turnOn();
+    		farol.setEstado(true);
     }
 
     public void desligarFarol(){
     	if(!farol.getEstado())
     		System.out.println("O farol ja esta desligado.");
     	else
-    		farol.turnOff();
+    		farol.setEstado(false);
     }
 
     public void ativarBuzina(){

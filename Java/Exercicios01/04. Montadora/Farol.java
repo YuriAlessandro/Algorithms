@@ -17,12 +17,8 @@ public class Farol
         return estado;
     }
 
-    public void turnOn(){
-        estado = true;
-    }
-
-    public void turnOff(){
-        estado = false;
+    public void setEstado(boolean n_estado){
+        estado = n_estado;
     }
 
 }
