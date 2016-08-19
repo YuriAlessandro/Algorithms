@@ -9,7 +9,7 @@ public class Data{
 	private boolean t_hora;
 
 	public static final boolean FORMATO_12H;
-    public static final boolean FORMATO_24H;
+	public static final boolean FORMATO_24H;
 
     static{
     	FORMATO_12H = false;
