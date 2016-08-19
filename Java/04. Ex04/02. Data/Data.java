@@ -11,10 +11,10 @@ public class Data{
 	public static final boolean FORMATO_12H;
 	public static final boolean FORMATO_24H;
 
-    static{
-    	FORMATO_12H = false;
-    	FORMATO_24H = true;
-    }
+	static{
+		FORMATO_12H = false;
+		FORMATO_24H = true;
+	}
 
 	
 	public Data(int d, int m, int a){
