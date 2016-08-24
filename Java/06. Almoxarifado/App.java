@@ -3,9 +3,12 @@ import javax.swing.JOptionPane;
 public class App{
     public static void main(String [] args){
         
-        System.out.println("Criando novo usuário...");
+        System.out.println("Criando novos usuários...");
         Usuario a1 = new Usuario("Yuri", "192.156.21-24");
+        Usuario a2 = new Usuario("Emerson", "5982359");
+
         System.out.println("Usuário: " + a1.getName() + " - " + a1.getCpf());
+        System.out.println("Usuário: " + a2.getName() + " - " + a2.getCpf());
 
         System.out.println("Criando produtos...");
         Produto p1 = new Produto("COMP", "Computador", 0, 1550.99);
@@ -29,8 +32,8 @@ public class App{
 
         System.out.println("\nSolicitando produtos...");
         e1.solicitarProduto(a1, p1, 3);
-        e1.solicitarProduto(a1, p2, 10);
-        e1.solicitarProduto(a1, p2, 10);
+        e1.solicitarProduto(a2, p2, 10);
+        e1.solicitarProduto(a2, p2, 30);
         e1.solicitarProduto(a1, p3, 15);
 
         System.out.println("\nListando produtos após pedido...");
@@ -38,5 +41,11 @@ public class App{
 
         System.out.println("\nListando solicitações...");
         e1.listarSolicitacoes();
+
+        System.out.println("\nTentando achar produtos pelo nome...");
+        e1.buscarProdutos("Feijão");
+        e1.buscarProdutos("Trituradeira");
+
+        System.out.println("Normal exiting...");
     }
 }

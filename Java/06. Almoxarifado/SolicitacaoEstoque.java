@@ -1,17 +1,17 @@
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class SolicitacaoEstoque{
     private Usuario solicitante;
     private Produto produto;
     private int quantidade;
-    private LocalTime data;
+    private LocalDateTime data;
 
     public SolicitacaoEstoque(Usuario solicitante, 
                                 Produto produto, int quantidade){
         this.solicitante = solicitante;
         this.produto = produto;
         this.quantidade = quantidade;
-        this.data = LocalTime.now();
+        this.data = LocalDateTime.parse(LocalDataTime.now(), "dd/MM/yyy");
     }
 
     public Usuario getSolicitante(){
@@ -29,4 +29,5 @@ public class SolicitacaoEstoque{
     public LocalTime getData(){
         return this.data;
     }
+
 }
