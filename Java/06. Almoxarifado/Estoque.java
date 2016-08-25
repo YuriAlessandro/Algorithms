@@ -77,12 +77,13 @@ public class Estoque{
 
     public void listarSolicitacoes(){
         StringBuilder stringBuilder = new StringBuilder("Lista de Solicitações:\n");
-        
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(new Locale("pt", "BR"));
+
         for (SolicitacaoEstoque s : this.calls)
             stringBuilder.append(" -> " + s.getProduto().getNomeProduto() + " [" +
                                     s.getQuantidade() + "] - " + 
                                     s.getSolicitante().getName() +
-                                    " [" + s.getData().toLocalDate() + "] \n");
+                                    " [" + s.getData().format(fmt) + "] \n");
        
        JOptionPane.showMessageDialog(null, stringBuilder + "\nTotal de pedidos: " + 
                                         this.calls.size());
