@@ -1,4 +1,6 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZonedDateTime;
 
 public class SolicitacaoEstoque{
     private Usuario solicitante;
@@ -11,7 +13,7 @@ public class SolicitacaoEstoque{
         this.solicitante = solicitante;
         this.produto = produto;
         this.quantidade = quantidade;
-        this.data = LocalDateTime.parse(LocalDataTime.now(), "dd/MM/yyy");
+        this.data = LocalDateTime.now();
     }
 
     public Usuario getSolicitante(){
@@ -26,7 +28,7 @@ public class SolicitacaoEstoque{
         return this.quantidade;
     }
 
-    public LocalTime getData(){
+    public LocalDateTime getData(){
         return this.data;
     }
 

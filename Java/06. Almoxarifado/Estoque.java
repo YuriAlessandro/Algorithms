@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import java.util.Iterator;
 import java.lang.StringBuilder;
@@ -80,8 +81,8 @@ public class Estoque{
         for (SolicitacaoEstoque s : this.calls)
             stringBuilder.append(" -> " + s.getProduto().getNomeProduto() + " [" +
                                     s.getQuantidade() + "] - " + 
-                                    s.getSolicitante().getName() + 
-                                    " [" + s.getData() + "] \n");
+                                    s.getSolicitante().getName() +
+                                    " [" + s.getData().toLocalDate() + "] \n");
        
        JOptionPane.showMessageDialog(null, stringBuilder + "\nTotal de pedidos: " + 
                                         this.calls.size());
